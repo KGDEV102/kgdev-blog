@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import Home from "./pages/Home";
+import Home from "./pages/Home";         // ✔ KHÔNG có dấu { }
 import CreatePost from "./pages/CreatePost";
 import Login from "./pages/Login";
 import PostDetail from "./pages/PostDetail";
