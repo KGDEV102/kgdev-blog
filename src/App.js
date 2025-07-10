@@ -3,7 +3,10 @@ import Navbar from "./components/Navbar";
 import Home from "./pages/Home";         // ✔ KHÔNG có dấu { }
 import CreatePost from "./pages/CreatePost";
 import Login from "./pages/Login";
+import Signup from "./pages/Signup.jsx"
 import PostDetail from "./pages/PostDetail";
+import MyPosts from "./pages/MyPosts.jsx";
+import InforUser from "./pages/InforUser.jsx";
 
 function App() {
   return (
@@ -11,8 +14,11 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/myposts" element={<MyPosts/>} />
         <Route path="/create" element={<CreatePost />} />
+        <Route path="/infor" element={<InforUser />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup/>}/>
         <Route path="/post/:id" element={<PostDetail />} />
       </Routes>
     </BrowserRouter>
