@@ -11,7 +11,7 @@
   }
   
   .Navbar h1 {
-    font-size: 3.6rem;
+    font-size: 3.4rem;
     font-weight: 700;
     color: white;
   }
@@ -20,9 +20,10 @@
     display: flex;
     color: var(--text-dark);
     align-items: center;
-    gap: 2.4rem;
+    gap: 4.8rem;
     font-size: 1.8rem;
-    font-weight: 400;
+    font-weight: 300;
+    
   }
   
   .Navbar__menu a {
@@ -37,7 +38,7 @@
   }
   .Navbar__menu .active {
     color: var(--text-light);
-    font-weight: 600;
+    font-weight: 400;
     position: relative;
   }
   .Navbar__menu .active::after {
@@ -51,4 +52,40 @@
     border-radius: 1px;
     transition: width 0.3s ease;
   }
+  /* burger icon */
+  .Navbar__burger {
+    display: none;
+    font-size: 3rem;
+    cursor: pointer;
+    color: var(--text-light);
+  }
+
+  /* Responsive breakpoint */
+@media (max-width: 768px) {
+    .Navbar__burger {
+      display: block;
+    }
   
+    .Navbar__menu {
+      position: absolute;
+      top: 100%;
+      right: 2rem;
+      background-color: var(--secondary-color);
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.6rem;
+      padding: 2rem;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+     
+      opacity: 0;
+    }
+  
+    .open {
+        transform: translateY(0);
+        opacity: 1;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+        transform: translateY(-10px);
+    }
+  }
+ 

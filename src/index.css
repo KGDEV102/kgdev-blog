@@ -27,7 +27,7 @@ body{
   --border-radius:8px;
   --shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   --transition: all 0.2s ease;
-  --fs-sm: 1.4rem;
+   --fs-sm: 1.4rem;
   --fs-md: 1.6rem;
   --fs-lg: 2rem;
   --spacing-sm: 1rem;
