@@ -1,30 +1,32 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "./Navbar.css";
 function Navbar() {
   const [isLoggedIn, setLoggedIn] = useState(false);
   return (
     <>
+      <div className="container">
       <nav className="Navbar">
-        <Link to="/"><h2>KGDEV</h2></Link>
+        <NavLink to="/"><h1>KGDEV</h1></NavLink>
         <ul className="Navbar__menu">
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/myposts">My Posts</Link></li>
-          <li><Link to="/create">Create Posts</Link></li>
+          <li><NavLink to="/" className={({ isActive }) => isActive ? "active" : ""}>Home</NavLink></li>
+          <li><NavLink to="/myposts" className={({ isActive }) => isActive ? "active" : ""}>My Posts</NavLink></li>
+          <li><NavLink to="/create">Create Posts</NavLink></li>
           {
             isLoggedIn ? (
-              <li><Link to="/infor">icon</Link></li>
+              <li><NavLink to="/infor" className={({ isActive }) => isActive ? "active" : ""}>icon</NavLink></li>
             ): (
                 <li>
-                  <span><Link to="/login">Login</Link></span>
+                  <span><NavLink to="/login" className={({ isActive }) => isActive ? "active" : ""}>Login</NavLink></span>
                   /
-                  <span><Link to="/signup">Signup</Link></span>
+                  <span><NavLink to="/signup" className={({ isActive }) => isActive ? "active" : ""}>Signup</NavLink></span>
               </li>   
             )
           }
           
         </ul>
       </nav>
+      </div>
     </>
   )
    
