@@ -10,7 +10,7 @@ function Home() {
         "Learn the aid mechanisms supporting input on future AI issues.",
       author: "John Doe",
       createdAt: "Apr 10, 2024",
-      media: { type: "image", src: "/assets/ai.jpg" },
+      media: { type: "image", src: "../assets/imgs/1_T8jGxkvqe8OBJLArxrDXnA.jpg" },
       likes: 40,
       comments: 10,
     },

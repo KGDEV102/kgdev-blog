@@ -1,5 +1,5 @@
 import { FaHeart, FaComment } from "react-icons/fa";
-
+import "./Postcard.css"
 function Postcard({
   id,
   title,
@@ -12,7 +12,7 @@ function Postcard({
 }) {
   return (
     <>
-      <article className="postcard">
+      <div className="postcard">
         <div className="postcard__media">
           {media.type === "image" && <img src={media.src} alt={title} />}
           {media.type === "video" && <video src={media.src} controls />}
@@ -30,7 +30,7 @@ function Postcard({
             </div>
           </div>
         </div>
-      </article>
+      </div>
     </>
   );
 }
