@@ -1,4 +1,6 @@
 import { FaHeart, FaComment } from "react-icons/fa";
+import { Link } from "react-router-dom";
+
 import "./Postcard.css"
 function Postcard({
   id,
@@ -30,6 +32,9 @@ function Postcard({
             </div>
           </div>
         </div>
+        <button className="read-more btn btn-small hidden-hover">
+          <Link to={`/posts/${id}`}>Xem thêm →</Link>
+        </button>
       </div>
     </>
   );

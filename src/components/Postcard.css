@@ -1,18 +1,17 @@
 .postcard {
   background-color: var(--card-bg);
   border-radius: var(--border-radius);
-  box-shadow: var(--shadow);
   transition: var(--transition);
-  display: flex;
-  flex-direction: column;
+  height: 100%;
   overflow: hidden;
-   height: 100%;
-  display: flex;
-  flex-direction: column;
-   border-top-left-radius: var(--border-radius);
-  border-top-right-radius: var(--border-radius);
+  position: relative;
+  border: 1px solid transparent;
 }
-
+.postcard:hover{
+  transform:scale(1.01);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
 .postcard__media {
   height: 180px;
   overflow: hidden;
@@ -48,14 +47,36 @@
   font-size: var(--fs-sm);
   color: var(--text-dark);
 }
-audio {
+.postcard__media audio {
   width: 100%;
   height: 36px;
-  border-radius: var(--border-radius);
-}
-.postcard__media audio {
-  height: 40px;
   object-fit: contain;
   background-color: #fff;
-  border-radius: 6px;
+  border-radius: var(--border-radius);
+} 
+.read-more{
+  background-color:#3b82f6 ;
+  font-size: 1.4rem;
+  border: 1px solid #3b82f6;
+ 
+  
+}
+.read-more:hover{
+  background-color:#60a5fa ;
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+}
+.read-more.hidden-hover {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+ 
+}
+.postcard:hover .hidden-hover {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+ 
 }
