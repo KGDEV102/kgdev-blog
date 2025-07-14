@@ -1,8 +1,8 @@
 import { useState } from "react";
 import Postcard from "../components/Postcard";
-import "./Home.css"
+import "./Home.css";
 function Home() {
-  const [list, setList] = useState([
+  const list = [
     {
       id: 1,
       title: "Exploring the Future of AI",
@@ -10,7 +10,10 @@ function Home() {
         "Learn the aid mechanisms supporting input on future AI issues.",
       author: "John Doe",
       createdAt: "Apr 10, 2024",
-      media: { type: "image", src: "../assets/imgs/1_T8jGxkvqe8OBJLArxrDXnA.jpg" },
+      media: {
+        type: "image",
+        src: "../assets/imgs/1_T8jGxkvqe8OBJLArxrDXnA.jpg",
+      },
       likes: 40,
       comments: 10,
     },
@@ -63,19 +66,111 @@ function Home() {
       media: { type: "image", src: "/assets/responsive.jpg" },
       likes: 150,
       comments: 33,
+    },
+    {
+      id: 7,
+      title: "A Guide to Responsive Web Design",
+      description: "Learn how to design websites using a modern layout system.",
+      author: "John Doe",
+      createdAt: "Apr 10, 2024",
+      media: { type: "image", src: "/assets/responsive.jpg" },
+      likes: 150,
+      comments: 33,
+    },
+    {
+      id: 8,
+      title: "A Guide to Responsive Web Design",
+      description: "Learn how to design websites using a modern layout system.",
+      author: "John Doe",
+      createdAt: "Apr 10, 2024",
+      media: { type: "image", src: "/assets/responsive.jpg" },
+      likes: 150,
+      comments: 33,
+    },
+    {
+      id: 9,
+      title: "A Guide to Responsive Web Design",
+      description: "Learn how to design websites using a modern layout system.",
+      author: "John Doe",
+      createdAt: "Apr 10, 2024",
+      media: { type: "image", src: "/assets/responsive.jpg" },
+      likes: 150,
+      comments: 33,
+    },
+    {
+      id: 10,
+      title: "A Guide to Responsive Web Design",
+      description: "Learn how to design websites using a modern layout system.",
+      author: "John Doe",
+      createdAt: "Apr 10, 2024",
+      media: { type: "image", src: "/assets/responsive.jpg" },
+      likes: 150,
+      comments: 33,
+    },
+    {
+      id: 11,
+      title: "A Guide to Responsive Web Design",
+      description: "Learn how to design websites using a modern layout system.",
+      author: "John Doe",
+      createdAt: "Apr 10, 2024",
+      media: { type: "image", src: "/assets/responsive.jpg" },
+      likes: 150,
+      comments: 33,
+    },
+  ];
+
+  const [currentPage, setCurrentPage] = useState(1);
+  let visiblePost = [];
+  const postPerPage = 10;
+  const totalPages = Math.ceil(list.length / postPerPage);
+  const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1);
+
+  const startIndex = (currentPage - 1) * postPerPage;
+  const endIndex = startIndex + postPerPage;
+  visiblePost = list.slice(startIndex, endIndex);
+  function getPageNumbers(currentPage, totalPages) {
+    if (totalPages <= 7) {
+      // Nếu tổng số trang ít, hiển thị tất cả
+      return Array.from({ length: totalPages }, (_, i) => i + 1);
     }
-  ]);
+
+    if (currentPage <= 3) {
+      return [1, 2, 3, 4, "...", totalPages];
+    }
+
+    if (currentPage >= totalPages - 2) {
+      return [
+        1,
+        "...",
+        totalPages - 3,
+        totalPages - 2,
+        totalPages - 1,
+        totalPages,
+      ];
+    }
+
+    return [
+      1,
+      "...",
+      currentPage - 1,
+      currentPage,
+      currentPage + 1,
+      "...",
+      totalPages,
+    ];
+  }
+
+
   return (
     <>
       <div className="container">
         <input type="text" placeholder="Tìm kiếm..."></input>
         <div className="lists">
           <ul className="Postcard-lists">
-            {list.map((item) => {
+            {visiblePost.map((item) => {
               return (
-                <li>
+                <li key={item.id}>
                   <Postcard
-                    key={item.id}
                     id={item.id}
                     title={item.title}
                     description={item.description}
@@ -89,6 +184,39 @@ function Home() {
               );
             })}
           </ul>
+          <div className="paginations">
+            <button
+              className={currentPage === 1 ? "disable" : ""}
+              onClick={() => {
+                if (currentPage > 1) {
+                  setCurrentPage(currentPage - 1);
+                }
+              }}
+            >
+              «
+            </button>
+            {pageNumbers &&
+              pageNumbers.map((number) => (
+                <button
+                  key={number}
+                  onClick={() => {
+                    setCurrentPage(number);
+                  }}
+                >
+                  {number}
+                </button>
+              ))}
+            <button
+              className={currentPage === totalPages ? "disable" : ""}
+              onClick={() => {
+                if (currentPage < totalPages) {
+                  setCurrentPage(currentPage + 1);
+                }
+              }}
+            >
+              »
+            </button>
+          </div>
         </div>
       </div>
     </>
