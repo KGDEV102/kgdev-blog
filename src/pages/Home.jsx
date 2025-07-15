@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import Postcard from "../components/Postcard";
 import "./Home.css";
 function Home() {
@@ -118,6 +118,11 @@ function Home() {
       comments: 33,
     },
   ];
+  const [slideDirection, setSlideDirection] = useState("right");
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [currentPage]);
 
   const [currentPage, setCurrentPage] = useState(1);
   let visiblePost = [];
@@ -129,44 +134,93 @@ function Home() {
   const endIndex = startIndex + postPerPage;
   visiblePost = list.slice(startIndex, endIndex);
   function getPageNumbers(currentPage, totalPages) {
-    if (totalPages <= 7) {
-      // Nếu tổng số trang ít, hiển thị tất cả
-      return Array.from({ length: totalPages }, (_, i) => i + 1);
+    const siblingCount = 1;
+    const boundaryCount = 1;
+    const totalVisibleNumbers = siblingCount * 2 + 3 + boundaryCount * 2; // 7 nếu sibling = 1, boundary = 1
+
+    if (totalPages <= totalVisibleNumbers) {
+      // Trả về toàn bộ nếu số trang ít
+      return [...Array(totalPages).keys()].map((x) => x + 1);
     }
 
-    if (currentPage <= 3) {
-      return [1, 2, 3, 4, "...", totalPages];
+    const pages = [];
+
+    const leftSiblingStart = Math.max(
+      currentPage - siblingCount,
+      boundaryCount + 2
+    );
+    const rightSiblingEnd = Math.min(
+      currentPage + siblingCount,
+      totalPages - boundaryCount - 1
+    );
+
+    // 1. Các trang đầu tiên
+    for (let i = 1; i <= boundaryCount; i++) {
+      pages.push(i);
     }
 
-    if (currentPage >= totalPages - 2) {
-      return [
-        1,
-        "...",
-        totalPages - 3,
-        totalPages - 2,
-        totalPages - 1,
-        totalPages,
-      ];
+    // 2. '...' bên trái
+    if (leftSiblingStart > boundaryCount + 2) {
+      pages.push("...");
+    } else if (leftSiblingStart === boundaryCount + 2) {
+      pages.push(boundaryCount + 1);
     }
 
-    return [
-      1,
-      "...",
-      currentPage - 1,
-      currentPage,
-      currentPage + 1,
-      "...",
-      totalPages,
-    ];
+    // 3. Các trang chính giữa
+    for (let i = leftSiblingStart; i <= rightSiblingEnd; i++) {
+      pages.push(i);
+    }
+
+    // 4. '...' bên phải
+    if (rightSiblingEnd < totalPages - boundaryCount - 1) {
+      pages.push("...");
+    } else if (rightSiblingEnd === totalPages - boundaryCount - 1) {
+      pages.push(totalPages - boundaryCount);
+    }
+
+    // 5. Các trang cuối
+    for (let i = totalPages - boundaryCount + 1; i <= totalPages; i++) {
+      pages.push(i);
+    }
+
+    return pages;
+    // if (totalPages <= 7) {
+    //   // Nếu tổng số trang ít, hiển thị tất cả
+    //   return Array.from({ length: totalPages }, (_, i) => i + 1);
+    // }
+
+    // if (currentPage <= 3) {
+    //   return [1, 2, 3, 4, "...", totalPages];
+    // }
+
+    // if (currentPage >= totalPages - 2) {
+    //   return [
+    //     1,
+    //     "...",
+    //     totalPages - 3,
+    //     totalPages - 2,
+    //     totalPages - 1,
+    //     totalPages,
+    //   ];
+    // }
+
+    // return [
+    //   1,
+    //   "...",
+    //   currentPage - 1,
+    //   currentPage,
+    //   currentPage + 1,
+    //   "...",
+    //   totalPages,
+    // ];
   }
-
 
   return (
     <>
       <div className="container">
         <input type="text" placeholder="Tìm kiếm..."></input>
         <div className="lists">
-          <ul className="Postcard-lists">
+          <ul className={`Postcard-lists slide-${slideDirection}`}>
             {visiblePost.map((item) => {
               return (
                 <li key={item.id}>
@@ -189,27 +243,32 @@ function Home() {
               className={currentPage === 1 ? "disable" : ""}
               onClick={() => {
                 if (currentPage > 1) {
+                  setSlideDirection("left");
                   setCurrentPage(currentPage - 1);
                 }
               }}
             >
               «
             </button>
-            {pageNumbers &&
-              pageNumbers.map((number) => (
-                <button
-                  key={number}
-                  onClick={() => {
+            {getPageNumbers(currentPage, totalPages).map((number) => (
+              <button
+                key={number}
+                onClick={() => {
+                  if (typeof number === "number") {
+                    setSlideDirection(number > currentPage ? "right" : "left");
                     setCurrentPage(number);
-                  }}
-                >
-                  {number}
-                </button>
-              ))}
+                  }
+                }}
+                className={number === currentPage ? "active" : "" ? "dots" : ""}
+              >
+                {typeof number === "number" ? number : "..."}
+              </button>
+            ))}
             <button
               className={currentPage === totalPages ? "disable" : ""}
               onClick={() => {
                 if (currentPage < totalPages) {
+                  setSlideDirection("right");
                   setCurrentPage(currentPage + 1);
                 }
               }}
