@@ -120,19 +120,20 @@ function Home() {
   ];
   const [slideDirection, setSlideDirection] = useState("right");
 
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }, [currentPage]);
+ 
 
   const [currentPage, setCurrentPage] = useState(1);
   let visiblePost = [];
   const postPerPage = 10;
   const totalPages = Math.ceil(list.length / postPerPage);
-  const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1);
+ 
 
   const startIndex = (currentPage - 1) * postPerPage;
   const endIndex = startIndex + postPerPage;
   visiblePost = list.slice(startIndex, endIndex);
+   useEffect(() => {
+     window.scrollTo({ top: 0, behavior: "smooth" });
+   }, [currentPage]);
   function getPageNumbers(currentPage, totalPages) {
     const siblingCount = 1;
     const boundaryCount = 1;
