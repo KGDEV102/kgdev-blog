@@ -1,0 +1,62 @@
+.paginations {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 3rem;
+  flex-wrap: wrap;
+}
+
+.paginations button {
+  padding: 6px 12px;
+  background-color: #1f1f1f;
+  color: #ddd;
+  border: 1px solid #333;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+ 
+}
+
+.paginations button:hover {
+  background-color: #333;
+  color: white;
+  transform: translateY(-2px);
+}
+
+.paginations .active {
+  background-color: #3b82f6;
+  color: white;
+  font-weight: bold;
+  border-color: #3b82f6;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.4);
+}
+
+.disable {
+  opacity: 0.5;
+  pointer-events: none;
+  cursor:not-allowed;
+}
+
+.animate-slide {
+  animation: slideIn 0.4s ease-in-out;
+}
+@keyframes blinkDots {
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.dots {
+  cursor: default;
+  animation: blinkDots 1s infinite;
+  font-weight: bold;
+  background-color: transparent;
+  border: none;
+  color: #888;
+  font-size: 18px;
+}
