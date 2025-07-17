@@ -4,7 +4,7 @@ import SkeletonPostcard from "../components/SkeletonPostcard";
 import "./Home.css";
 import Pagination from "../components/Pagination";
 function Home() {
-  const list = [
+  const [list, setList] = useState([
     {
       id: 1,
       title: "Exploring the Future of AI",
@@ -16,6 +16,8 @@ function Home() {
         type: "image",
         src: "../assets/imgs/1_T8jGxkvqe8OBJLArxrDXnA.jpg",
       },
+      category: "Frontend",
+      tags: ["React", "JavaScript", "JSX"],
       likes: 40,
       comments: 10,
     },
@@ -26,6 +28,8 @@ function Home() {
       author: "John Doe",
       createdAt: "Apr 10, 2024",
       media: { type: "image", src: "/assets/node.jpg" },
+      category: "Data",
+      tags: ["Python", "ETL", "Pipeline"],
       likes: 42,
       comments: 25,
     },
@@ -36,6 +40,8 @@ function Home() {
       author: "John Doe",
       createdAt: "Apr 10, 2024",
       media: { type: "image", src: "/assets/ml.jpg" },
+      category: "Dev Tips",
+      tags: ["Git", "Version Control", "CLI"],
       likes: 2000,
       comments: 48,
     },
@@ -46,6 +52,8 @@ function Home() {
       author: "John Doe",
       createdAt: "Apr 10, 2024",
       media: { type: "video", src: "/assets/closures.mp4" }, // Thêm video
+      category: "Frontend",
+      tags: ["CSS", "Flexbox", "Grid"],
       likes: 68,
       comments: 12,
     },
@@ -56,6 +64,8 @@ function Home() {
       author: "John Doe",
       createdAt: "Apr 10, 2024",
       media: { type: "audio", src: "/assets/lofi.mp3" }, // Thêm audio
+      category: "Data",
+      tags: ["Python", "Beginner", "Syntax"],
       likes: 88,
       comments: 6,
     },
@@ -66,6 +76,8 @@ function Home() {
       author: "John Doe",
       createdAt: "Apr 10, 2024",
       media: { type: "image", src: "/assets/responsive.jpg" },
+      category: "Backend",
+      tags: ["API", "REST", "Fetch"],
       likes: 150,
       comments: 33,
     },
@@ -76,6 +88,8 @@ function Home() {
       author: "John Doe",
       createdAt: "Apr 10, 2024",
       media: { type: "image", src: "/assets/responsive.jpg" },
+      category: "Frontend",
+      tags: ["React", "useState", "Todo"],
       likes: 150,
       comments: 33,
     },
@@ -86,6 +100,8 @@ function Home() {
       author: "John Doe",
       createdAt: "Apr 10, 2024",
       media: { type: "image", src: "/assets/responsive.jpg" },
+      category: "Data",
+      tags: ["Python", "Pandas", "Data Analysis"],
       likes: 150,
       comments: 33,
     },
@@ -96,6 +112,8 @@ function Home() {
       author: "John Doe",
       createdAt: "Apr 10, 2024",
       media: { type: "image", src: "/assets/responsive.jpg" },
+      category: "Data",
+      tags: ["Python", "Pandas", "Data Analysis"],
       likes: 150,
       comments: 33,
     },
@@ -106,6 +124,8 @@ function Home() {
       author: "John Doe",
       createdAt: "Apr 10, 2024",
       media: { type: "image", src: "/assets/responsive.jpg" },
+      category: "Data",
+      tags: ["Python", "Pandas", "Data Analysis"],
       likes: 150,
       comments: 33,
     },
@@ -116,13 +136,15 @@ function Home() {
       author: "John Doe",
       createdAt: "Apr 10, 2024",
       media: { type: "image", src: "/assets/responsive.jpg" },
+      category: "Data",
+      tags: ["Python", "Pandas", "Data Analysis"],
       likes: 150,
       comments: 33,
     },
-  ];
+  ]);
   const [slideDirection, setSlideDirection] = useState("right");
   const [isLoading, setIsLoading] = useState(true);
- 
+  
 
   const [currentPage, setCurrentPage] = useState(1);
    useEffect(() => {
@@ -136,11 +158,7 @@ function Home() {
    }, [currentPage]);
   let visiblePost = [];
   const postPerPage = 10;
-  const totalPages = Math.ceil(list.length / postPerPage);
-
-  const startIndex = (currentPage - 1) * postPerPage;
-  const endIndex = startIndex + postPerPage;
-  visiblePost = list.slice(startIndex, endIndex);
+   
 
   
     // if (totalPages <= 7) {
@@ -171,13 +189,51 @@ function Home() {
     //   currentPage + 1,
     //   "...",
     //   totalPages,
-    // ];
-  
+  // ];
+   const totalPages = Math.ceil(list.length / postPerPage);
 
+   const startIndex = (currentPage - 1) * postPerPage;
+   const endIndex = startIndex + postPerPage;
+   visiblePost = list.slice(startIndex, endIndex);
+  const [searchPosts, setSearchPosts] = useState("");
+ 
+  const handleClick = () => {
+    if (!searchPosts.trim()) {
+      alert("Vui lòng nhập bài viết cần tìm!");
+      return;
+    }
+    const keywords = searchPosts.trim().toLowerCase().split(/\s+/);
+    const filerPosts = list.filter((post) => {
+      const title = post.title.trim().toLowerCase();
+      return keywords.every(keyword => title.includes(keyword));
+    }
+      
+    );
+    setList(filerPosts);
+    setCurrentPage(1);
+    setSearchPosts("");
+
+  }
   return (
     <>
       <div className="container">
-        <input type="text" placeholder="Tìm kiếm..."></input>
+        <div className="search">
+          <input
+            type="text"
+            placeholder="Tìm kiếm..."
+            value={searchPosts}
+            onChange={(e) => setSearchPosts(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key.toLowerCase() === 'enter') {
+                e.preventDefault();
+                handleClick();
+             }
+            }}
+          ></input>
+          <button
+            onClick={handleClick}
+          >Search</button>
+        </div>
         <div className="lists">
           <ul className={`Postcard-lists slide-${slideDirection}`}>
             {isLoading
