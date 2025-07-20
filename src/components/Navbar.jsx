@@ -11,7 +11,7 @@ function Navbar() {
   return (
     <>
   
-      <nav className="Navbar ">
+      <nav className="Navbar container ">
         <NavLink to="/"><h1>KGDEV</h1></NavLink>
         <ul className={`Navbar__menu ${isOpen ? "open" : ""} `}>
             
