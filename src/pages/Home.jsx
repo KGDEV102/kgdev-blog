@@ -168,8 +168,7 @@ function Home() {
 
     return () => clearTimeout(timer);
   }, [currentPage]);
-  let visiblePost = [];
-  const postPerPage = 10;
+  
 
   // if (totalPages <= 7) {
   //   // Nếu tổng số trang ít, hiển thị tất cả
@@ -200,11 +199,14 @@ function Home() {
   //   "...",
   //   totalPages,
   // ];
+ 
+  const postPerPage = 10;
   const totalPages = Math.ceil(list.length / postPerPage);
+  const visiblePost = useMemo(() => {
+    const startIndex = (currentPage - 1) * postPerPage;
+    return list.slice(startIndex, startIndex + postPerPage);
+  }, [list, currentPage]);
 
-  const startIndex = (currentPage - 1) * postPerPage;
-  const endIndex = startIndex + postPerPage;
-  visiblePost = list.slice(startIndex, endIndex);
   
   
   const categories = useMemo(
@@ -224,44 +226,48 @@ function Home() {
       <div className="container">
         <PostFilter
           setList={setList}
-        setCurrentPage={setCurrentPage}
-        originalList={originalList}
-        categories={categories}
-        tags={tags}
+          setCurrentPage={setCurrentPage}
+          originalList={originalList}
+          categories={categories}
+          tags={tags}
         />
         <div className="lists">
           <ul className={`Postcard-lists slide-${slideDirection}`}>
-            {isLoading
-              ? Array.from({ length: visiblePost.length }).map((_, i) => (
-                  <li key={i}>
-                    <SkeletonPostcard />
+            {isLoading ? (
+              Array.from({ length: visiblePost.length }).map((_, i) => (
+                <li key={i}>
+                  <SkeletonPostcard />
+                </li>
+              ))
+            ) : visiblePost.length === 0 ? (
+              <div>Không có bài viết...</div>
+            ) : (
+              visiblePost.map((item) => {
+                return (
+                  <li key={item.id}>
+                    <Postcard
+                      id={item.id}
+                      title={item.title}
+                      description={item.description}
+                      author={item.author}
+                      createdAt={item.createdAt}
+                      media={item.media}
+                      likes={item.likes}
+                      comments={item.comments}
+                    />
                   </li>
-                ))
-              : visiblePost.map((item) => {
-                  return (
-                    <li key={item.id}>
-                      <Postcard
-                        id={item.id}
-                        title={item.title}
-                        description={item.description}
-                        author={item.author}
-                        createdAt={item.createdAt}
-                        media={item.media}
-                        likes={item.likes}
-                        comments={item.comments}
-                      />
-                    </li>
-                  );
-                })}
+                );
+              })
+            )}
           </ul>
-          <Pagination
+        {visiblePost.length > 0 && totalPages > 1 &&(  <Pagination
             currentPage={currentPage}
             totalPages={totalPages}
             onPageChange={(page) => {
               setSlideDirection(page > currentPage ? "right" : "left");
               setCurrentPage(page);
             }}
-          />
+          />)}
         </div>
       </div>
     </>
