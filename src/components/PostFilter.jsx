@@ -52,7 +52,7 @@ function PostFilter({ setList, setCurrentPage, originalList, categories, tags })
     };
 
   return (
-    <div className="search-filter-bar">
+    <div className="search-filter-bar ">
       <div className="filter-top">
         <input
           type="text"

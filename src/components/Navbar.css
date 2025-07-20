@@ -1,6 +1,6 @@
 .Navbar {
     background-color: var(--secondary-color);
-    padding: 1.6rem 2.4rem; 
+    padding: 2rem 3.8rem; 
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -65,6 +65,9 @@
 @media (max-width: 768px) {
     .Navbar__burger {
       display: block;
+    }
+    .Navbar{
+      padding:2rem;
     }
   
     .Navbar__menu {

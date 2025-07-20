@@ -1,31 +1,28 @@
 .search-filter-bar {
-  background: #1c1c1c;
+  
   border-radius: 10px;
-  padding: 1rem;
-  margin-bottom: 1.5rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-  color: white;
-  font-family: "Segoe UI", sans-serif;
+  padding:2rem 0; 
+  margin-bottom: 2rem;
+ 
 }
 
-/* Top Row: Input + Dropdown + Buttons */
+
 .filter-top {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem;
+  gap: 1rem;
   align-items: center;
-  margin-bottom: 0.75rem;
+  margin-bottom: 1.4rem;
 }
 
 .filter-top input[type="text"] {
   flex: 1;
   min-width: 200px;
-  padding: 0.55rem 0.75rem;
+  padding: 0.75rem;
   border-radius: 6px;
   border: none;
   background: #2a2a2a;
-  color: white;
-  font-size: 1rem;
+ 
 }
 
 .filter-top select {
@@ -48,18 +45,8 @@
 }
 
 .filter-top button:hover {
-  background-color: #4338ca;
-  transform: scale(1.05);
+ background-color: #7267ff;
 }
-
-.clear-button {
-  background: #ef4444;
-}
-.clear-button:hover {
-  background: #dc2626;
-}
-
-/* ================== TAG SECTION ================== */
 
 .tag-section {
   display: flex;
@@ -67,22 +54,20 @@
   gap: 0.5rem;
 }
 
-/* Header for tag */
+
 .dropdown-header {
   font-weight: 600;
-  color: #aaa;
   cursor: pointer;
-  font-size: 0.95rem;
   user-select: none;
 }
 
-/* Tag container - scrollable horizontally */
+
 .tag-dropdown {
   display: flex;
   overflow-x: auto;
   white-space: nowrap;
   gap: 0.5rem;
-  padding-bottom: 0.25rem;
+  padding-bottom: 0.75rem;
   scrollbar-width: thin;
   scrollbar-color: #4f46e5 transparent;
 }
