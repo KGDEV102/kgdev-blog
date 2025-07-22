@@ -1,9 +1,10 @@
 import { useState, useEffect, useMemo } from "react";
 import Postcard from "../components/Postcard";
 import SkeletonPostcard from "../components/SkeletonPostcard";
-import "./Home.css";
 import Pagination from "../components/Pagination";
 import PostFilter from "../components/PostFilter";
+import Footer from "../components/Footer";
+import "./Home.css";
 function Home() {
   const [list, setList] = useState([]);
   const [originalList, setOriginalList] = useState([]);
@@ -240,7 +241,7 @@ function Home() {
                 </li>
               ))
             ) : visiblePost.length === 0 ? (
-              <div>Không có bài viết...</div>
+              <div className="no-result">Không có bài viết...</div>
             ) : (
               visiblePost.map((item) => {
                 return (
@@ -260,16 +261,19 @@ function Home() {
               })
             )}
           </ul>
-        {visiblePost.length > 0 && totalPages > 1 &&(  <Pagination
-            currentPage={currentPage}
-            totalPages={totalPages}
-            onPageChange={(page) => {
-              setSlideDirection(page > currentPage ? "right" : "left");
-              setCurrentPage(page);
-            }}
-          />)}
+          {visiblePost.length > 0 && totalPages > 1 && (
+            <Pagination
+              currentPage={currentPage}
+              totalPages={totalPages}
+              onPageChange={(page) => {
+                setSlideDirection(page > currentPage ? "right" : "left");
+                setCurrentPage(page);
+              }}
+            />
+          )}
         </div>
       </div>
+      
     </>
   );
 }

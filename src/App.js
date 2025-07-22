@@ -1,12 +1,13 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import Home from "./pages/Home";         // ✔ KHÔNG có dấu { }
+import Home from "./pages/Home";         
 import CreatePost from "./pages/CreatePost";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup.jsx"
 import PostDetail from "./pages/PostDetail";
 import MyPosts from "./pages/MyPosts.jsx";
 import InforUser from "./pages/InforUser.jsx";
+import Footer from "./components/Footer.jsx";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/signup" element={<Signup/>}/>
         <Route path="/posts/:id" element={<PostDetail />} />
       </Routes>
+      <Footer/>
     </BrowserRouter>
   );
 }

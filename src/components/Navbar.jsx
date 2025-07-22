@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import "./Navbar.css";
 import { FaBars, FaTimes } from 'react-icons/fa';
-
+import "./Navbar.css";
 function Navbar() {
   const [isLoggedIn, setLoggedIn] = useState(false);
   const [isOpen, setIsOpen] = useState(false);

@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
-import "./PostFilter.css"
 import { FiSearch } from "react-icons/fi";
-
+import "./PostFilter.css";
 function PostFilter({ setList, setCurrentPage, originalList, categories, tags }) {
    
     const [searchInput, setSearchInput] = useState(""); 
