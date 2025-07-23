@@ -47,7 +47,7 @@ function Footer() {
 
             {/* <!-- Cột 4: Follow us --> */}
             <div class="footer-column">
-              <h3>Follow us</h3>
+              <h3>Follow me</h3>
               <div class="socials">
                 <a href="https://www.facebook.com/anh.kiet.phan.kgdev/">
                   <FaFacebook></FaFacebook>
