@@ -3,7 +3,7 @@ import Postcard from "../components/Postcard";
 import SkeletonPostcard from "../components/SkeletonPostcard";
 import Pagination from "../components/Pagination";
 import PostFilter from "../components/PostFilter";
-import Footer from "../components/Footer";
+import Footer from "../Layout/DefaultLayout/Footer/Footer";
 import "./Home.css";
 function Home() {
   const [list, setList] = useState([]);
@@ -169,7 +169,6 @@ function Home() {
 
     return () => clearTimeout(timer);
   }, [currentPage]);
-  
 
   // if (totalPages <= 7) {
   //   // Nếu tổng số trang ít, hiển thị tất cả
@@ -200,7 +199,7 @@ function Home() {
   //   "...",
   //   totalPages,
   // ];
- 
+
   const postPerPage = 10;
   const totalPages = Math.ceil(list.length / postPerPage);
   const visiblePost = useMemo(() => {
@@ -208,8 +207,6 @@ function Home() {
     return list.slice(startIndex, startIndex + postPerPage);
   }, [list, currentPage]);
 
-  
-  
   const categories = useMemo(
     () => [...new Set(originalList.map((p) => p.category))],
     [originalList]
@@ -218,10 +215,7 @@ function Home() {
     () => [...new Set(originalList.flatMap((p) => p.tags))],
     [originalList]
   );
-  
 
-
-  
   return (
     <>
       <div className="container">
@@ -273,7 +267,6 @@ function Home() {
           )}
         </div>
       </div>
-      
     </>
   );
 }
