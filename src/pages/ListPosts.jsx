@@ -1,11 +1,11 @@
 import { useState, useEffect, useMemo } from "react";
+import { forwardRef } from "react";
 import Postcard from "../components/Postcard";
 import SkeletonPostcard from "../components/SkeletonPostcard";
 import Pagination from "../components/Pagination";
 import PostFilter from "../components/PostFilter";
-import Footer from "../Layout/DefaultLayout/Footer/Footer";
-import "./Home.css";
-function Home() {
+import "./ListPosts.css";
+const ListPosts = forwardRef((props, ref) => {
   const [list, setList] = useState([]);
   const [originalList, setOriginalList] = useState([]);
   useEffect(() => {
@@ -218,7 +218,8 @@ function Home() {
 
   return (
     <>
-      <div className="container">
+
+      <div className="container ListPosts" ref={ref} style={{ scrollMarginTop: "85.6px" }}>
         <PostFilter
           setList={setList}
           setCurrentPage={setCurrentPage}
@@ -226,48 +227,51 @@ function Home() {
           categories={categories}
           tags={tags}
         />
-        <div className="lists">
-          <ul className={`Postcard-lists slide-${slideDirection}`}>
-            {isLoading ? (
-              Array.from({ length: visiblePost.length }).map((_, i) => (
-                <li key={i}>
-                  <SkeletonPostcard />
-                </li>
-              ))
-            ) : visiblePost.length === 0 ? (
-              <div className="no-result">Không có bài viết...</div>
-            ) : (
-              visiblePost.map((item) => {
-                return (
-                  <li key={item.id}>
-                    <Postcard
-                      id={item.id}
-                      title={item.title}
-                      description={item.description}
-                      author={item.author}
-                      createdAt={item.createdAt}
-                      media={item.media}
-                      likes={item.likes}
-                      comments={item.comments}
-                    />
+       
+          <div className="lists">
+            <ul className={`Postcard-lists slide-${slideDirection}`}>
+              {isLoading ? (
+                Array.from({ length: visiblePost.length }).map((_, i) => (
+                  <li key={i}>
+                    <SkeletonPostcard />
                   </li>
-                );
-              })
+                ))
+              ) : visiblePost.length === 0 ? (
+                <div className="no-result">Không có bài viết...</div>
+              ) : (
+                visiblePost.map((item) => {
+                  return (
+                    <li key={item.id}>
+                      <Postcard
+                        id={item.id}
+                        title={item.title}
+                        description={item.description}
+                        author={item.author}
+                        createdAt={item.createdAt}
+                        media={item.media}
+                        likes={item.likes}
+                        comments={item.comments}
+                      />
+                    </li>
+                  );
+                })
+              )}
+            </ul>
+            {visiblePost.length > 0 && totalPages > 1 && (
+              <Pagination
+                currentPage={currentPage}
+                totalPages={totalPages}
+                onPageChange={(page) => {
+                  setSlideDirection(page > currentPage ? "right" : "left");
+                  setCurrentPage(page);
+                }}
+              />
             )}
-          </ul>
-          {visiblePost.length > 0 && totalPages > 1 && (
-            <Pagination
-              currentPage={currentPage}
-              totalPages={totalPages}
-              onPageChange={(page) => {
-                setSlideDirection(page > currentPage ? "right" : "left");
-                setCurrentPage(page);
-              }}
-            />
-          )}
+          </div>
         </div>
-      </div>
+     
     </>
   );
-}
-export default Home;
+})
+
+export default ListPosts;

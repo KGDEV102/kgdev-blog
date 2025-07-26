@@ -1,5 +1,5 @@
 import CreatePost from "../pages/CreatePost";
-import Home from "../pages/Home";
+import Home from "../pages/Home/Home";
 import InforUser from "../pages/InforUser";
 import Login from "../pages/Login";
 import MyPost from "../pages/MyPosts";

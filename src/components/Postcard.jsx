@@ -16,7 +16,7 @@ function Postcard({
     <>
       <div className="postcard">
         <div className="postcard__media">
-          {media.type === "image" && <img src={media.src} alt={title} />}
+          {media.type === "image" && <img src={media.src.default} alt={title} />}
           {media.type === "video" && <video src={media.src} controls />}
           {media.type === "audio" && <audio src={media.src} controls />}
         </div>

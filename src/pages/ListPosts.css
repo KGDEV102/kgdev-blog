@@ -6,6 +6,7 @@
   align-items: stretch;
   
 }
+
 @media (max-width: 1024px) {
   .Postcard-lists {
     grid-template-columns: repeat(2, 1fr);

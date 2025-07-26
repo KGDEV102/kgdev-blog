@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { publicRoutes } from "./Routes/index.js";
 import { Fragment } from "react/jsx-runtime";
 import Navbar from "./Layout/DefaultLayout/Navbar/Navbar.jsx";
-import Home from "./pages/Home";         
+import Home from "./pages/ListPosts.jsx";         
 import CreatePost from "./pages/CreatePost";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup.jsx"

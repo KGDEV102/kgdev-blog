@@ -21,6 +21,7 @@ body{
 :root{
   --primary-color: #0E1A39;      
   --secondary-color: #131517;
+  --Navbar-height:85.6px;
   --text-light:  #e4e4e7;
   --text-dark:#a1a1aa;
   --card-bg:#121319;
