@@ -1,6 +1,7 @@
 
 import "./HeroSection.css"; 
 import futuristicImg from "../../assets/imgs/A futuristic 3D illu.png";
+import { Link } from "react-router-dom";
 
 function HeroSection({ onScrollClick }) {
   return (
@@ -11,9 +12,13 @@ function HeroSection({ onScrollClick }) {
             Chào mừng đến với <span className="highlight">KGDEV</span>
           </h1>
           <p>Nơi chia sẻ kiến thức, kinh nghiệm, cuộc sống...</p>
-          <button className="cta-button" onClick={onScrollClick}>
-            Xem bài viết
-          </button>
+      <Link to="/listposts">
+            <button className="cta-button" onClick={() => {
+              
+            }}>
+              Xem bài viết
+            </button>
+      </Link>
         </div>
 
         <div className="image-content">
