@@ -1,54 +1,79 @@
 .hero-section {
-  background: linear-gradient(to bottom, #0f0f0f, #1a1a1a);
-  color: white;
-  padding: 100px 20px;
+  width: 100%;
+  background-color: #0f0f0f;
+  color: #ffffff;
+  padding: 100px 40px;
   display: flex;
-  align-items: center;
   justify-content: center;
-  min-height: 100vh;
+  align-items: center;
 }
 
 .hero-content {
+  max-width: 1300px;
+  width: 100%;
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  max-width: 1200px;
-  width: 100%;
-  gap: 50px;
+  gap: 60px;
 }
 
 .text-content {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .text-content h1 {
-  font-size: 3rem;
-  margin-bottom: 20px;
+  font-size: 3.8rem;
+  font-weight: 800;
+  margin-bottom: 24px;
+  line-height: 1.2;
 }
 
 .text-content .highlight {
-  color: #00ffff;
+  color: #00e0ff;
 }
 
 .text-content p {
-  font-size: 1.2rem;
-  margin-bottom: 30px;
+  font-size: 1.6rem;
+  margin-bottom: 40px;
+  font-family: 'Courier New', monospace;
+  color: #ccc;
+  animation: typing 4s steps(50, end), blink-caret 0.75s step-end infinite;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid #00e0ff;
+  max-width: 100%;
+}
+
+/* Typing animation */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: #00e0ff }
 }
 
 .cta-button {
-  padding: 12px 24px;
-  background-color: #00ffff;
+  background: linear-gradient(135deg, #00e0ff, #0085ff);
   border: none;
-  color: black;
-  font-weight: bold;
-  border-radius: 8px;
+  color: white;
+  padding: 16px 36px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 10px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: fit-content;
 }
 
 .cta-button:hover {
-  background-color: #00dddd;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(0, 224, 255, 0.3);
 }
 
 .image-content {
@@ -58,18 +83,33 @@
 }
 
 .image-content img {
-  max-width: 100%;
+  width: 100%;
+  max-width: 580px;
   height: auto;
-  border-radius: 16px;
+  border-radius: 20px;
+  filter: drop-shadow(0 0 40px rgba(0, 224, 255, 0.15));
 }
 
-@media (max-width: 768px) {
+/* Responsive */
+@media (max-width: 992px) {
   .hero-content {
-    flex-direction: column;
+    flex-direction: column-reverse;
     text-align: center;
+    gap: 40px;
   }
 
-  .image-content {
-    margin-top: 40px;
+  .text-content h1 {
+    font-size: 2.4rem;
+  }
+
+  .text-content p {
+    font-size: 1.1rem;
+    animation: none;
+    border: none;
+    white-space: normal;
+  }
+
+  .image-content img {
+    max-width: 90%;
   }
 }
