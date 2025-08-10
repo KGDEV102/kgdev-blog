@@ -1,0 +1,101 @@
+.post-media {
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.post-media-image {
+  width: 100%;
+  height: auto;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.post-media-video {
+  width: 100%;
+  max-height: 500px;
+  border-radius: 12px;
+  overflow: hidden;
+ 
+}
+
+.post-media-audio {
+
+  padding: 15px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.post-media-audio audio {
+  width: 100%;
+}
+/* File trong media */
+.post-media-file {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px;
+  background: #1f2937;
+  color: #f9fafb;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.25s ease, transform 0.1s ease;
+}
+
+.post-media-file:hover {
+  background: #374151;
+  transform: translateY(-1px);
+}
+
+.post-media-file-icon {
+  font-size: 1.5rem;
+}
+
+.post-media-file-name {
+  flex: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.post-media-file-size {
+  font-size: 0.85rem;
+  color: #9ca3af;
+}
+
+/* Link trong media */
+.post-media-link {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 14px 16px;
+  background: #111827;
+  border: 1px solid #1f2937;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #e5e7eb;
+  transition: border-color 0.25s ease, background 0.25s ease;
+}
+
+.post-media-link:hover {
+  background: #1f2937;
+  border-color: #2563eb;
+}
+
+.post-media-link-title {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.post-media-link-url {
+  font-size: 0.85rem;
+  color: #9ca3af;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+

@@ -6,7 +6,7 @@ import Home from "./pages/ListPosts.jsx";
 import CreatePost from "./pages/CreatePost";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup.jsx"
-import PostDetail from "./pages/PostDetail";
+
 import MyPosts from "./pages/MyPosts.jsx";
 import InforUser from "./pages/InforUser.jsx";
 import Footer from "./Layout/DefaultLayout/Footer/Footer.jsx";

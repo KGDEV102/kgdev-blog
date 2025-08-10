@@ -1,0 +1,224 @@
+/* --- Global Reset for Post Detail --- */
+.post-detail {
+  max-width: 1000px;
+  margin:4rem auto;
+
+
+}
+.post-container{
+    margin:0 auto;
+}
+
+
+
+
+
+
+
+/* Title */
+.post-title {
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+
+}
+
+/* Meta Info */
+.post-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  font-size: 0.95rem;
+  color: #a1a1aa;
+  margin-bottom: 2rem;
+}
+
+.author-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+}
+
+.author-name {
+  font-weight: 500;
+  color: #fff;
+}
+
+.meta-icon {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Post Content */
+.post-content h2 {
+  font-size: 1.6rem;
+  margin-top: 2rem;
+  margin-bottom: 0.8rem;
+  color: #fff;
+}
+
+.post-content h3 {
+  font-size: 1.3rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.6rem;
+  color: #ddd;
+}
+
+.post-content p {
+  margin-bottom: 1rem;
+  color: #d1d5db;
+}
+
+.post-content ul {
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.post-content li {
+  list-style: disc;
+  margin-bottom: 0.5rem;
+}
+
+/* Code Block */
+.post-content pre {
+  background-color: #1a1a1c;
+  padding: 1rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin-bottom: 1.5rem;
+}
+
+.post-content code {
+  font-family: 'Fira Code', monospace;
+  color: #ffae57;
+  font-size: 0.9rem;
+}
+
+/* Comments Section */
+.comments-section {
+  margin-top: 3rem;
+}
+
+.comments-section h3 {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+}
+
+.comments-section textarea {
+  width: 100%;
+  min-height: 100px;
+  padding: 0.8rem;
+  border-radius: 8px;
+  background-color: #1a1a1c;
+  border: none;
+  color: #e5e5e5;
+  resize: vertical;
+  margin-bottom: 1rem;
+}
+
+.comments-section .btn {
+  padding: 0.6rem 1.2rem;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.3s ease;
+}
+
+.comments-section .btn:hover {
+  background: #1d4ed8;
+}
+
+/* Comment Item */
+.comment {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #262626;
+}
+
+.comment-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.comment-body {
+  flex: 1;
+}
+
+.comment-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  margin-bottom: 0.4rem;
+}
+
+.comment-author {
+  font-weight: 500;
+  color: #fff;
+}
+
+.comment-time {
+  color: #9ca3af;
+}
+
+.reply-btn {
+  background: none;
+  border: none;
+  color: #2563eb;
+  cursor: pointer;
+  font-size: 0.85rem;
+  padding: 0;
+  margin-top: 0.4rem;
+}
+
+.reply-btn:hover {
+  text-decoration: underline;
+}
+
+/* Related Posts */
+.related-posts {
+  margin-top: 3rem;
+}
+
+.related-posts h3 {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+}
+
+.related-list {
+  display: flex;
+  gap: 1rem;
+}
+
+.related-item {
+  flex: 1;
+  padding: 1rem;
+  background-color: #1a1a1c;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.related-item:hover {
+  background-color: #2a2a2c;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .post-detail {
+    padding: 1rem;
+  }
+  .post-title {
+    font-size: 1.8rem;
+  }
+  .post-meta {
+    gap: 0.5rem;
+  }
+}

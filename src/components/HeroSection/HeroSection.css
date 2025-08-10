@@ -1,7 +1,7 @@
 .hero-section {
   width: 100%;
-  background-color: #0f0f0f;
-  color: #ffffff;
+  
+ 
   padding: 100px 40px;
   display: flex;
   justify-content: center;
@@ -9,7 +9,7 @@
 }
 
 .hero-content {
-  max-width: 1300px;
+  max-width: 1440px;
   width: 100%;
   display: flex;
   align-items: center;
@@ -18,14 +18,27 @@
 }
 
 .text-content {
-  flex: 1;
+  width: 40%;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
+.image-content {
+  flex:1;
+  display: flex;
+  justify-content: center;
+}
+
+.image-content img {
+  width: 100%;
+ 
+  height: auto;
+  border-radius: 20px;
+  filter: drop-shadow(0 0 40px rgba(0, 224, 255, 0.15));
+}
 
 .text-content h1 {
-  font-size: 3.8rem;
+  font-size: 3.6rem;
   font-weight: 800;
   margin-bottom: 24px;
   line-height: 1.2;
@@ -35,22 +48,29 @@
   color: #00e0ff;
 }
 
+
 .text-content p {
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   margin-bottom: 40px;
   font-family: 'Courier New', monospace;
-  color: #ccc;
-  animation: typing 4s steps(50, end), blink-caret 0.75s step-end infinite;
+  color: var(--text-dark);
   white-space: nowrap;
   overflow: hidden;
   border-right: 3px solid #00e0ff;
   max-width: 100%;
+
+  animation: typing 6s steps(50, end) infinite, blink-caret 0.75s step-end infinite;
+  animation-direction: alternate; /* đánh tới rồi đánh lại */
+  animation-fill-mode: both;
 }
 
 /* Typing animation */
 @keyframes typing {
   from { width: 0 }
-  to { width: 100% }
+  to { width: 60ch } /* nếu dòng có khoảng 40 ký tự */
+}
+.text-content p {
+  width: 60ch;
 }
 
 @keyframes blink-caret {
@@ -62,7 +82,7 @@
   background: linear-gradient(135deg, #00e0ff, #0085ff);
   border: none;
   color: white;
-  padding: 16px 36px;
+  padding: 14px 28px;
   font-size: 1.1rem;
   font-weight: 600;
   border-radius: 10px;
@@ -76,40 +96,90 @@
   box-shadow: 0 10px 24px rgba(0, 224, 255, 0.3);
 }
 
-.image-content {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-}
 
-.image-content img {
-  width: 100%;
-  max-width: 580px;
-  height: auto;
-  border-radius: 20px;
-  filter: drop-shadow(0 0 40px rgba(0, 224, 255, 0.15));
-}
 
 /* Responsive */
-@media (max-width: 992px) {
+@media (max-width: 1024px) {
+  
   .hero-content {
     flex-direction: column-reverse;
-    text-align: center;
+    
     gap: 40px;
   }
-
+  .text-content{
+    width: 100%;
+    text-align: center;
+    display: flex;
+  justify-content: center;
+  align-items: center;
+  }
   .text-content h1 {
+    font-size: 3rem;
+    width: 100%;
+    
+  }
+
+  .text-content p {
+    font-size: 1.2rem;
+   
+    
+     margin-bottom: 24px;
+  }
+  
+
+
+  .image-content img {
+    max-width: 80%;
+  }
+   .cta-button {
+  background: linear-gradient(135deg, #00e0ff, #0085ff);
+  border: none;
+  color: white;
+  padding: 13px 26px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: fit-content;
+}
+}
+
+@media (max-width:768px){
+   .text-content h1 {
     font-size: 2.4rem;
+    width: 100%;
+    margin-bottom: 20px;
   }
 
   .text-content p {
     font-size: 1.1rem;
-    animation: none;
-    border: none;
-    white-space: normal;
+    margin-bottom: 20px;
   }
+  .text-content {
+  width: 100%;
+    text-align: center;
+    display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+
+  
+  
   .image-content img {
-    max-width: 90%;
+    max-width: 80%;
   }
+  .cta-button {
+  background: linear-gradient(135deg, #00e0ff, #0085ff);
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: fit-content;
+}
 }
